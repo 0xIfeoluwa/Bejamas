@@ -1,0 +1,99 @@
+/* * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 2rem 2rem;
+  font-family: "Archivo", sans-serif;
+}
+
+.header {
+  margin: 25px 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#samurai {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
+.cart-button {
+  width: 257px;
+  height: 47px;
+  color: white;
+  background: #000;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.main-section {
+  position: relative;
+}
+
+.photo {
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  width: 271.951416015625;
+  height: 67;
+  color: #000;
+  background: white;
+  padding: 15px;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+}
+
+.about-pet {
+  margin: 15px 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+#animal {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(101, 101, 101, 1);
+}
+
+#about-text {
+  margin: 25px 0;
+  width: 690px;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(101, 101, 101, 1);
+}
+
+.size {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.side {
+  float: left;
+}
+
+.card-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+  z-index: 20;
+  bottom: 0;
+} */

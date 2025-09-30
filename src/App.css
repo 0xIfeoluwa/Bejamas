@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 1rem 5rem;
+  font-family: "Archivo", sans-serif;
+}
+
+.header {
+  margin: 25px 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#samurai {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
+.cart-button {
+  width: 257px;
+  height: 47px;
+  color: white;
+  background: #000;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.main-section {
+  position: relative;
+}
+
+.photo {
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  width: 271.951416015625;
+  height: 67;
+  color: #000;
+  background: white;
+  padding: 15px;
+}
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.about-pet {
+  margin: 15px 0;
+  font-size: 22px;
+  font-weight: 700;
+  /* float: right; */
+}
+
+.card-suggestion {
+    margin-left: 20px;
+}
+#animal {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(101, 101, 101, 1);
+}
+
+#about-text {
+  margin: 25px 0;
+  width: 690px;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(101, 101, 101, 1);
+}
+
+.size {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* .side {
+  float: left;
+} */
+
+.card {
+  margin: 10px;
+  /* width: 100%; */
+}
+
+.card-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card-img-container {
+  position: relative;
+}
+.card-btn {
+  position: absolute;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  /* width: 100%; */
+  height: 46px;
+  background-color: #000;
+  color: white;
+  border: 0px;
+}
+
+.card-category {
+  margin: 5px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #656565;
+}
+
+.card-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.card-price {
+  font-size: 29px;
+  font-weight: 400;
+  color: #656565;
+}
+
+.card-category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.checkbutton-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox {
+  margin: 20px 0px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checckbox-category {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.check-div {
+  margin: 20px 0;
+}

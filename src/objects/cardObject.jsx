@@ -1,0 +1,98 @@
+export const cardObject = [
+  {
+    img: "/images/people.png",
+    category: "People",
+    title: "Red Bench",
+    price: 3.86,
+  },
+  {
+    img: "/images/man.png",
+    category: "People",
+    title: "Man",
+    price: 100.0,
+  },
+  {
+    img: "/images/landmarks.png",
+    category: "Landmarks",
+    title: "Architecture",
+    price: 101.0,
+  },
+  {
+    img: "/images/food.png",
+    category: "Food",
+    title: "Egg Balloon",
+    price: 93.89,
+  },
+  {
+    img: "/images/people.png",
+    category: "People",
+    title: "Red Bench",
+    price: 3.86,
+  },
+  {
+    img: "/images/man.png",
+    category: "People",
+    title: "Man",
+    price: 100.0,
+  },
+  {
+    img: "/images/landmarks.png",
+    category: "Landmarks",
+    title: "Architecture",
+    price: 101.0,
+  },
+  {
+    img: "/images/food.png",
+    category: "Food",
+    title: "Egg Balloon",
+    price: 93.89,
+  },
+  {
+    img: "/images/people.png",
+    category: "People",
+    title: "Red Bench",
+    price: 3.86,
+  },
+  {
+    img: "/images/man.png",
+    category: "People",
+    title: "Man",
+    price: 100.0,
+  },
+  {
+    img: "/images/landmarks.png",
+    category: "Landmarks",
+    title: "Architecture",
+    price: 101.00,
+  },
+  {
+    img: "/images/food.png",
+    category: "Food",
+    title: "Egg Balloon",
+    price: 93.89,
+  },
+  {
+    img: "/images/people.png",
+    category: "People",
+    title: "Red Bench",
+    price: 3.86,
+  },
+  {
+    img: "/images/man.png",
+    category: "People",
+    title: "Man",
+    price: 100.00,
+  },
+  {
+    img: "/images/landmarks.png",
+    category: "Landmarks",
+    title: "Architecture",
+    price: 101.00,
+  },
+  {
+    img: "/images/food.png",
+    category: "Food",
+    title: "Egg Balloon",
+    price: 93.89,
+  },
+];
