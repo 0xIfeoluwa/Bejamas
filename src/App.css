@@ -51,9 +51,19 @@ body {
 }
 
 .about {
-  display: flex;
-  justify-content: space-between;
+  display: flex;  
+  justify-content: space-between;  
+  align-items: flex-start;  
   margin: 20px 0;
+}
+  
+.side {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 300px;
+  padding-left: 40px;
 }
 
 .about-pet {
@@ -64,8 +74,9 @@ body {
 }
 
 .card-suggestion {
-    margin-left: 20px;
+  margin-left: 20px;
 }
+
 #animal {
   margin: 10px 0;
   font-size: 18px;
@@ -82,17 +93,27 @@ body {
 }
 
 .size {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 16px;  font-weight: 400;
 }
-
-/* .side {
-  float: left;
-} */
 
 .card {
   margin: 10px;
+  cursor: pointer;
   /* width: 100%; */
+}
+
+.card-img-container:hover {
+  transform: scale(1.03);
+  transition: transform 0.8s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25); /* deeper shadow */
+  filter: brightness(0.8); /* slightly darker */
+}
+
+img:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25); /* deeper shadow */
+  filter: brightness(0.8); /* slightly darker */
 }
 
 .card-section {
@@ -106,9 +127,7 @@ body {
 .card-btn {
   position: absolute;
   z-index: 20;
-  bottom: 0;
-  left: 0;
-  /* width: 100%; */
+  bottom: 0;  left: 0;  width: 100%;
   height: 46px;
   background-color: #000;
   color: white;
@@ -153,7 +172,7 @@ body {
   margin-right: 10px;
 }
 
-.checckbox-category {
+.checkbox-category {
     font-size: 22px;
     font-weight: 700;
     color: #000000;
@@ -161,4 +180,38 @@ body {
 
 .check-div {
   margin: 20px 0;
+}
+
+.photo-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25); /* deeper shadow */
+  filter: brightness(0.8); /* slightly darker */
+}
+
+button:active {
+  background-color: #d0d0d0;
+}
+
+img {
+  cursor: pointer;
 }
