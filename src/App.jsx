@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback } from "react";
 import "./App.css";
 import { Card } from "./components/card";
 import { CheckButton } from "./components/checkbutton";
-import { CartIcon, LogoIcon, Sort } from "./components/icons/Icons";
+import { CartIcon, CloseIcon, LogoIcon, Sort } from "./components/icons/Icons";
 import { photoOfTheDay, cardObject } from "./objects/cardObject";
 import { Category } from "./objects/category";
 
@@ -81,20 +81,7 @@ function App() {
                 className="p-2 text-gray-500 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
               >
                 {/* Close Icon (X) */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <CloseIcon />
               </button>
             </div>
 
@@ -128,7 +115,7 @@ function App() {
                         Qty: {item.quantity}
                       </p>
                       <p className="text-sm font-semibold text-gray-600">
-                        ${item.price.toFixed(2)} / ea
+                        ${item.price.toFixed(2)}
                       </p>
                     </div>
                     <div className="text-right flex flex-col items-end">
@@ -146,6 +133,15 @@ function App() {
                 ))
               )}
             </div>
+
+            {/* Conditional Clear Cart Button */}
+            {cart.length > 0 && (
+              <div>
+                <button className="clear-cart" onClick={() => setCart([])}>
+                  CLEAR
+                </button>
+              </div>
+            )}
 
             {/* Cart Footer / Subtotal */}
             {cart.length > 0 && (

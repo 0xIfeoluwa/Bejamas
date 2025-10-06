@@ -32,8 +32,7 @@ body {
 }
 
 .cart-button {
-  width: 100%;
-  max-width: 257px;
+  width: 257px;
   height: 47px;
   color: white;
   background: #000;
@@ -83,6 +82,7 @@ body {
 }
 
 .card-suggestion {
+  display: flex;
   margin-left: 0;
   margin-top: 20px;
 }
@@ -266,6 +266,19 @@ img, input {
   border-radius: 9999px;
 }
 
+.clear-cart {
+  margin: 0 1rem ;
+  text-align: center;
+  width: 90%;
+  height: 47px;
+  color: black;
+  background: white;
+  font-size: clamp(18px, 4vw, 23px);
+  font-weight: 500;
+  border: 2px solid black;
+
+}
+
 /* Tablet breakpoint */
 @media (min-width: 768px) {
   body {
@@ -286,10 +299,6 @@ img, input {
     max-width: 300px;
     padding-left: 40px;
   }
-
-  .card-suggestion {
-    margin-left: 20px;
-  }
 }
 
 /* Desktop breakpoint */
@@ -301,4 +310,11 @@ img, input {
   .card-section {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+@media screen and (max-width: 768px) {
+  .cart-button {
+    width: 100%;
+  }
+  
 }
