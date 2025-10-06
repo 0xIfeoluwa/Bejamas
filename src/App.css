@@ -1,22 +1,25 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 1rem 5rem;
+  margin: 1rem;
   font-family: "Archivo", sans-serif;
 }
 
 .header {
-  margin: 25px 0 25px;
+  margin: 25px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 #samurai {
-  font-size: 32px;
+  font-size: clamp(24px, 5vw, 32px);
   font-weight: 700;
 }
 
@@ -24,14 +27,17 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 25px 0;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .cart-button {
-  width: 257px;
+  width: 100%;
+  max-width: 257px;
   height: 47px;
   color: white;
   background: #000;
-  font-size: 23px;
+  font-size: clamp(18px, 4vw, 23px);
   font-weight: 500;
 }
 
@@ -41,13 +47,14 @@ body {
 
 .photo {
   position: absolute;
-  bottom: 0rem;
-  left: 0rem;
-  width: 271.951416015625;
-  height: 67;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  max-width: 90%;
   color: #000;
   background: white;
   padding: 15px;
+  font-size: clamp(14px, 2.5vw, 16px);
 }
 
 .about {
@@ -55,117 +62,133 @@ body {
   justify-content: space-between;  
   align-items: flex-start;  
   margin: 20px 0;
+  flex-direction: column;
+  gap: 2rem;
 }
   
 .side {
-  margin-left: auto;
+  margin-left: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  max-width: 300px;
-  padding-left: 40px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 0;
 }
 
 .about-pet {
   margin: 15px 0;
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
-  /* float: right; */
 }
 
 .card-suggestion {
-  margin-left: 20px;
+  margin-left: 0;
+  margin-top: 20px;
 }
 
 #animal {
   margin: 10px 0;
-  font-size: 18px;
+  font-size: clamp(16px, 3vw, 18px);
   font-weight: 700;
   color: rgba(101, 101, 101, 1);
 }
 
 #about-text {
   margin: 25px 0;
-  width: 690px;
-  font-size: 18px;
+  width: 100%;
+  max-width: 690px;
+  font-size: clamp(16px, 3vw, 18px);
   font-weight: 400;
   color: rgba(101, 101, 101, 1);
 }
 
 .size {
-  font-size: 16px;  font-weight: 400;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 400;
 }
 
 .card {
   margin: 10px;
   cursor: pointer;
-  /* width: 100%; */
 }
 
 .card-img-container:hover {
   transform: scale(1.03);
   transition: transform 0.8s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25); /* deeper shadow */
-  filter: brightness(0.8); /* slightly darker */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  filter: brightness(0.8);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 img:hover {
   transform: scale(1.03);
   transition: transform 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25); /* deeper shadow */
-  filter: brightness(0.8); /* slightly darker */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  filter: brightness(0.8);
 }
 
 .card-section {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
 .card-img-container {
   position: relative;
+  width: 100%;
 }
+
 .card-btn {
   position: absolute;
   z-index: 20;
-  bottom: 0;  left: 0;  width: 100%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: 46px;
   background-color: #000;
   color: white;
-  border: 0px;
+  border: 0;
+  font-size: clamp(14px, 2.5vw, 16px);
 }
 
 .card-category {
   margin: 5px 0;
-  font-size: 22px;
+  font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
   color: #656565;
 }
 
 .card-title {
-  font-size: 32px;
+  font-size: clamp(24px, 5vw, 32px);
   font-weight: 700;
   color: #000000;
 }
 
 .card-price {
-  font-size: 29px;
+  font-size: clamp(20px, 4vw, 29px);
   font-weight: 400;
   color: #656565;
 }
 
 .card-category-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .checkbutton-flex {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .checkbox {
-  margin: 20px 0px;
+  margin: 20px 0;
 }
 
 .checkbox input[type="checkbox"] {
@@ -173,9 +196,9 @@ img:hover {
 }
 
 .checkbox-category {
-    font-size: 22px;
-    font-weight: 700;
-    color: #000000;
+  font-size: clamp(18px, 4vw, 22px);
+  font-weight: 700;
+  color: #000000;
 }
 
 .check-div {
@@ -183,10 +206,12 @@ img:hover {
 }
 
 .photo-category {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .pagination {
@@ -194,6 +219,8 @@ img:hover {
   justify-content: center;
   align-items: center;
   margin: 25px 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 button {
@@ -201,17 +228,77 @@ button {
   border: none;
   background-color: #f0f0f0;
   cursor: pointer;
+  font-size: clamp(14px, 2.5vw, 16px);
 }
 
 button:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25); /* deeper shadow */
-  filter: brightness(0.8); /* slightly darker */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  filter: brightness(0.8);
 }
 
 button:active {
   background-color: #d0d0d0;
 }
 
-img {
+img, input {
   cursor: pointer;
+}
+
+.cart-icon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.item-count {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem; 
+  font-size: 0.75rem;
+  font-weight: 700; 
+  line-height: 1; 
+  color: white; 
+  background-color: gray; 
+  border-radius: 9999px;
+}
+
+/* Tablet breakpoint */
+@media (min-width: 768px) {
+  body {
+    margin: 1rem 2rem;
+  }
+
+  .card-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about {
+    flex-direction: row;
+  }
+
+  .side {
+    margin-left: auto;
+    align-items: flex-end;
+    max-width: 300px;
+    padding-left: 40px;
+  }
+
+  .card-suggestion {
+    margin-left: 20px;
+  }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 1024px) {
+  body {
+    margin: 1rem 5rem;
+  }
+
+  .card-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

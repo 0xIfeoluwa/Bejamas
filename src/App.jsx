@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import "./App.css";
 import { Card } from "./components/card";
 import { CheckButton } from "./components/checkbutton";
 import { CartIcon, LogoIcon, Sort } from "./components/icons/Icons";
-import { cardObject } from "./objects/cardObject";
+import { photoOfTheDay, cardObject } from "./objects/cardObject";
+import { Category } from "./objects/category";
 
 function App() {
   const [isChecked, setIschecked] = useState(false);
+  const [items, setItems] = useState(cardObject);
+  const [cart, setCart] = useState([]);
 
   // Pagination Logic
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,36 +19,188 @@ function App() {
   const currentItems = cardObject.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(cardObject.length / itemsPerPage);
 
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // Cart Logic
+  const totalCartItems = useMemo(
+    () => cart.reduce((total, item) => total + item.quantity, 0),
+    [cart]
+  );
+  const addToCart = useCallback((item) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((i) => i.id === item.id);
+      if (existingItem) {
+        return prevCart.map((i) =>
+          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      }
+      return [...prevCart, { ...item, quantity: 1 }];
+    });
+  }, []);
+
+  // Logic to remove an item from the cart completely
+  const removeFromCart = useCallback((itemId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+  }, []);
+
   return (
     <>
       <section className="header">
         <LogoIcon className="logo" />
-        <CartIcon className="cart" />
+        <CartIcon
+          className="cart"
+          itemCount={totalCartItems}
+          onClick={() => setIsCartOpen(true)}
+        />
       </section>
       <hr color="#E4E4E4" />
+
+      {/* Cart Banner/Modal UI - Appears when isCartOpen is true */}
+      {isCartOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-end transition-opacity duration-300"
+          // Close if clicking the backdrop
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setIsCartOpen(false);
+            }
+          }}
+        >
+          <div
+            // Banner container uses transform for slide-in effect
+            className="w-full sm:w-96 bg-white h-full shadow-2xl overflow-y-auto transform transition-transform duration-300 ease-in-out translate-x-0"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+          >
+            {/* Banner Header */}
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white shadow-sm z-10">
+              <h2 className="text-2xl font-bold text-gray-900">
+                Shopping Cart ({totalCartItems})
+              </h2>
+              <button
+                onClick={() => setIsCartOpen(false)}
+                className="p-2 text-gray-500 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
+              >
+                {/* Close Icon (X) */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Cart Items List */}
+            <div className="p-6 space-y-4 flex-grow">
+              {cart.length === 0 ? (
+                <p className="text-center text-gray-500 p-8">
+                  Your cart is empty. Start adding some photos!
+                </p>
+              ) : (
+                cart.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-start space-x-4 border-b pb-4 last:border-b-0"
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="w-16 h-16 object-cover rounded-md flex-shrink-0"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://placehold.co/100x100/cccccc/000000?text=Error";
+                      }}
+                    />
+                    <div className="flex-grow min-w-0">
+                      <h3 className="text-base font-medium text-gray-900 truncate">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-gray-500">
+                        Qty: {item.quantity}
+                      </p>
+                      <p className="text-sm font-semibold text-gray-600">
+                        ${item.price.toFixed(2)} / ea
+                      </p>
+                    </div>
+                    <div className="text-right flex flex-col items-end">
+                      <p className="text-lg font-bold text-gray-900">
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </p>
+                      <button
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-xs text-red-500 hover:text-red-700 mt-1"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {/* Cart Footer / Subtotal */}
+            {cart.length > 0 && (
+              <div className="p-6 border-t border-gray-100 sticky bottom-0 bg-white shadow-lg">
+                <div className="flex justify-between items-center mb-4">
+                  <p className="text-lg font-semibold text-gray-700">
+                    Subtotal:
+                  </p>
+                  <p className="text-2xl font-extrabold text-gray-900">
+                    $
+                    {cart
+                      .reduce(
+                        (sum, item) => sum + item.price * item.quantity,
+                        0
+                      )
+                      .toFixed(2)}
+                  </p>
+                </div>
+                <button className="w-full py-3 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors duration-200 shadow-xl">
+                  Checkout
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <section className="section">
-        <p id="samurai">Samurai King Resting</p>
-        <button className="cart-button">ADD TO CART</button>
+        <p id="samurai">{photoOfTheDay.title}</p>
+        <button
+          className="cart-button"
+          onClick={() => addToCart(photoOfTheDay)}
+        >
+          ADD TO CART
+        </button>
       </section>
       <section className="main-section">
-        <img src="/images/dog.png" alt="Dog" height="43%" width="100%" />
+        <img
+          src={photoOfTheDay.img}
+          alt={photoOfTheDay.title}
+          height="43%"
+          width="100%"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://placehold.co/1020x1020/cccccc/000000?text=Image+Error";
+          }}
+        />
         <p className="photo">Photo of the day</p>
       </section>
       <section className="about">
         <div>
-          <p className="about-pet">About the Samurai King Resting</p>
+          <p className="about-pet">About the {photoOfTheDay.title}</p>
           <p id="animal">Pets</p>
-          <p id="about-text">
-            So how did the classical Latin become so incoherent? According to
-            McClintock, a 15th century typesetter likely scrambled part of
-            Cicero's De Finibus in order to provide placeholder text to mockup
-            various fonts for a type specimen book.So how did the classical
-            Latin become so incoherent? According to McClintock, a 15th century
-            typesetter likely scrambled part of Cicero's De Finibus in order to
-            provide placeholder text to mockup various fonts for a type specimen
-            book.So how did the classical Latin become so incoherent? According
-            to McClintock.
-          </p>
+          <p id="about-text">{photoOfTheDay.description}</p>
         </div>
         <aside>
           <section className="side">
@@ -67,8 +222,13 @@ function App() {
       <hr color="#E4E4E4" />
       <section>
         <section className="photo-category">
-          <p>
-            Photography / <span>Premium Photos</span>
+          <p className="photo-text">
+            Photography /{" "}
+            <span
+              onClick={() => setItems(items.filter((item) => item.isPremium))}
+            >
+              Premium Photos
+            </span>
           </p>
           <aside>
             <Sort />
@@ -81,17 +241,15 @@ function App() {
           <section className="checkbutton-flex">
             <div className="check-div">
               <p className="checkbox-category">Category</p>
-              <CheckButton
-                label="People"
-                checked={isChecked}
-                onChange={(e) => setIschecked(e.target.checked)}
-              />
-              <CheckButton label="Premium" />
-              <CheckButton label="Pets" />
-              <CheckButton label="Food" />
-              <CheckButton label="Landmarks" />
-              <CheckButton label="Cities" />
-              <CheckButton label="Nature" />
+
+              {Category.map((cat) => (
+                <CheckButton
+                  key={cat}
+                  label={cat}
+                  checked={isChecked}
+                  onChange={(e) => setIschecked(e.target.isChecked)}
+                />
+              ))}
             </div>
             <hr />
             <div className="check-div">
@@ -102,7 +260,7 @@ function App() {
               <CheckButton label="More than $200" />
             </div>
           </section>
-          <section className="card-section">
+          <div className="card-section">
             {currentItems.map((card, index) => {
               return (
                 <ul key={index}>
@@ -111,41 +269,45 @@ function App() {
                     alt={card.title}
                     category={card.category}
                     title={card.title}
-                    price={"$" + card.price}
+                    price={"$" + card.price.toFixed(2)}
+                    onClick={() => addToCart(card)}
                   />
                 </ul>
               );
             })}
-            <div className="pagination">
-              <button
-                onClick={() => setCurrentPage((prev) => prev - 1)}
-                disabled={currentPage === 1}
-              >
-                Prev
-              </button>
-
-
-              {/* Page number buttons */}
-              {Array.from({ length: totalPages }, (_, i) => (
-                <ul
-                  key={i + 1}
-                  onClick={() => setCurrentPage(i + 1)}
-                  className={currentPage === i + 1 ? "active-page" : ""}
-                  style={{ margin: "0 4px", fontWeight: currentPage === i + 1 ? "bold" : "normal", cursor: "pointer" }}
-                >
-                  {i + 1}
-                </ul>
-              ))}
-
-              <button
-                onClick={() => setCurrentPage((prev) => prev + 1)}
-                disabled={currentPage === totalPages}
-              >
-                Next
-              </button>
-            </div>
-          </section>
+          </div>
         </section>
+        <div className="pagination">
+          <button
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
+
+          {/* Page number buttons */}
+          {Array.from({ length: totalPages }, (_, i) => (
+            <ul
+              key={i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+              className={currentPage === i + 1 ? "active-page" : ""}
+              style={{
+                margin: "0 4px",
+                fontWeight: currentPage === i + 1 ? "bold" : "normal",
+                cursor: "pointer",
+              }}
+            >
+              {i + 1}
+            </ul>
+          ))}
+
+          <button
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </section>
     </>
   );
