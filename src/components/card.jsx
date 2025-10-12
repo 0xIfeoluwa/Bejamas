@@ -5,8 +5,8 @@ export function Card({ src, alt, category, title, price, onClick }) {
         <img
           src={src}
           alt={alt}
-          height={390.6706848144531}
-          width={271.951416015625}
+          // height={390.6706848144531}
+          // width={271.951416015625}
         />
         <button className="card-btn" onClick={onClick}>
           {" "}

@@ -1,9 +1,23 @@
 export const Category = [
-  "People",
-  "Premium",
-  "Pets",
-  "Food",
-  "Landmarks",
-  "Cities",
-  "Nature"
+  {
+    name: "People",
+  },
+  {
+    name: "Premium",
+  },
+  {
+    name: "Pets",
+  },
+  {
+    name: "Food",
+  },
+  {
+    name: "Landmarks",
+  },
+  {
+    name: "Cities",
+  },
+  {
+    name: "Nature",
+  },
 ];

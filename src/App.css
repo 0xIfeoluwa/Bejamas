@@ -21,14 +21,17 @@ body {
 #samurai {
   font-size: clamp(24px, 5vw, 32px);
   font-weight: 700;
+  width: 100%;
 }
 
 .section {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 25px 0;
   flex-wrap: wrap;
   gap: 1rem;
+  flex-direction: column;
 }
 
 .cart-button {
@@ -42,12 +45,19 @@ body {
 
 .main-section {
   position: relative;
+  text-align: center;
+}
+
+.main-section img {
+  display: block;
+  margin: 0 auto;
 }
 
 .photo {
   position: absolute;
   bottom: 0;
   left: 0;
+  /* transform: translateX(-50%); */
   width: auto;
   max-width: 90%;
   color: #000;
@@ -57,19 +67,20 @@ body {
 }
 
 .about {
-  display: flex;  
-  justify-content: space-between;  
-  align-items: flex-start;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 20px 0;
   flex-direction: column;
   gap: 2rem;
+  text-align: center;
 }
-  
+
 .side {
   margin-left: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   max-width: 100%;
   padding-left: 0;
@@ -79,12 +90,15 @@ body {
   margin: 15px 0;
   font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
+  align-items: flex-start;
 }
 
 .card-suggestion {
   display: flex;
+  justify-content: center;
   margin-left: 0;
   margin-top: 20px;
+  gap: 10px;
 }
 
 #animal {
@@ -92,6 +106,7 @@ body {
   font-size: clamp(16px, 3vw, 18px);
   font-weight: 700;
   color: rgba(101, 101, 101, 1);
+  text-align: center;
 }
 
 #about-text {
@@ -106,17 +121,13 @@ body {
 .size {
   font-size: clamp(14px, 2.5vw, 16px);
   font-weight: 400;
-}
-
-.card {
-  margin: 10px;
-  cursor: pointer;
+  text-align: center;
 }
 
 .card-img-container:hover {
   transform: scale(1.03);
   transition: transform 0.8s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   filter: brightness(0.8);
 }
 
@@ -128,7 +139,7 @@ img {
 img:hover {
   transform: scale(1.03);
   transition: transform 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   filter: brightness(0.8);
 }
 
@@ -136,6 +147,7 @@ img:hover {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  justify-items: center;
 }
 
 .card-img-container {
@@ -161,30 +173,37 @@ img:hover {
   font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
   color: #656565;
+  text-align: center;
 }
 
 .card-title {
   font-size: clamp(24px, 5vw, 32px);
   font-weight: 700;
   color: #000000;
+  text-align: center;
 }
 
 .card-price {
   font-size: clamp(20px, 4vw, 29px);
   font-weight: 400;
   color: #656565;
+  text-align: center;
 }
 
 .card-category-grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+  width: 100%;
 }
 
 .checkbutton-flex {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
 }
 
 .checkbox {
@@ -199,19 +218,29 @@ img:hover {
   font-size: clamp(18px, 4vw, 22px);
   font-weight: 700;
   color: #000000;
+  text-align: center;
 }
 
 .check-div {
   margin: 20px 0;
+  width: 100%;
 }
 
 .photo-category {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 25px 0;
   flex-wrap: wrap;
   gap: 1rem;
+  flex-direction: column;
+}
+
+.photo-text {
+  font-size: clamp(26px, 4vw, 30px);
+  font-weight: 400;
+  color: rgba(101, 101, 101, 1);
+  text-align: center;
 }
 
 .pagination {
@@ -232,7 +261,7 @@ button {
 }
 
 button:hover {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   filter: brightness(0.8);
 }
 
@@ -240,7 +269,8 @@ button:active {
   background-color: #d0d0d0;
 }
 
-img, input {
+img,
+input {
   cursor: pointer;
 }
 
@@ -257,26 +287,38 @@ img, input {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem 0.5rem; 
+  padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
-  font-weight: 700; 
-  line-height: 1; 
-  color: white; 
-  background-color: gray; 
+  font-weight: 700;
+  line-height: 1;
+  color: white;
+  background-color: gray;
   border-radius: 9999px;
 }
 
 .clear-cart {
-  margin: 0 1rem ;
   text-align: center;
-  width: 90%;
+  width: 100%;
   height: 47px;
   color: black;
   background: white;
   font-size: clamp(18px, 4vw, 23px);
   font-weight: 500;
   border: 2px solid black;
+}
 
+.no-results {
+  font-size: clamp(16px, 3vw, 18px);
+  font-weight: 400;
+  color: rgba(101, 101, 101, 1);
+  text-align: center;
+  width: 100%;
+}
+
+.cart-btn {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 /* Tablet breakpoint */
@@ -285,12 +327,29 @@ img, input {
     margin: 1rem 2rem;
   }
 
+  .section {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #samurai {
+    text-align: left;
+    width: auto;
+  }
+
   .card-section {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .about {
     flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  #about-text {
+    text-align: left;
   }
 
   .side {
@@ -298,6 +357,49 @@ img, input {
     align-items: flex-end;
     max-width: 300px;
     padding-left: 40px;
+  }
+
+  .about-pet {
+    text-align: left;
+  }
+
+  #animal {
+    text-align: left;
+  }
+
+  .size {
+    text-align: right;
+  }
+
+  .card-suggestion {
+    justify-content: flex-end;
+  }
+
+  .photo {
+    left: 0;
+    transform: none;
+    text-align: left;
+  }
+
+  .photo-category {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .photo-text {
+    text-align: left;
+  }
+
+  .card-category-grid {
+    justify-content: space-between;
+  }
+
+  .checkbutton-flex {
+    align-items: flex-start;
+  }
+
+  .checkbox-category {
+    text-align: left;
   }
 }
 
@@ -316,5 +418,4 @@ img, input {
   .cart-button {
     width: 100%;
   }
-  
 }
