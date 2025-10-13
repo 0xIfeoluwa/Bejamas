@@ -25,7 +25,7 @@ export const cardObject = [
     category: "People",
     title: "Man",
     price: 100.0,
-    isPremium: true,
+    isPremium: false,
     id: crypto.randomUUID(),
   },
   {
@@ -33,6 +33,7 @@ export const cardObject = [
     category: "Landmarks",
     title: "Architecture",
     price: 101.0,
+    isPremium: true,
     id: crypto.randomUUID(),
   },
   {

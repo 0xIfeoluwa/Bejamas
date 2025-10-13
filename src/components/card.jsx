@@ -1,13 +1,13 @@
-export function Card({ src, alt, category, title, price, onClick }) {
+export function Card({ src, alt, category, title, price, onClick, isPremium }) {
   return (
     <section className="card">
       <div className="card-img-container">
-        <img
-          src={src}
-          alt={alt}
-          // height={390.6706848144531}
-          // width={271.951416015625}
-        />
+        {isPremium && (
+          <div className="absolute top-2 left-2 px-3 py-1 bg-black text-white text-xs font-semibold rounded-full z-10">
+            Premium
+          </div>
+        )}
+        <img src={src} alt={alt} />
         <button className="card-btn" onClick={onClick}>
           {" "}
           ADD TO CART

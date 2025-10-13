@@ -9,6 +9,16 @@ body {
   font-family: "Archivo", sans-serif;
 }
 
+.photo-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(26px, 4vw, 30px);
+  font-weight: 400;
+  color: rgba(101, 101, 101, 1);
+  width: 100%;
+}
+
 .header {
   margin: 25px 0;
   display: flex;
@@ -228,19 +238,11 @@ img:hover {
 
 .photo-category {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 25px 0;
-  flex-wrap: wrap;
+  width: 100%;
   gap: 1rem;
-  flex-direction: column;
-}
-
-.photo-text {
-  font-size: clamp(26px, 4vw, 30px);
-  font-weight: 400;
-  color: rgba(101, 101, 101, 1);
-  text-align: center;
 }
 
 .pagination {
@@ -321,10 +323,53 @@ input {
   margin-top: 10px;
 }
 
+.sort-by {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+/* Responsive for filter on mobile */
+@media (max-width: 800px) {
+  .checkbutton-flex {
+    display: none;
+  }
+  
+  #animal {
+    display: none;
+  }
+  
+  .sort-by {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+}
+
 /* Tablet breakpoint */
 @media (min-width: 768px) {
   body {
     margin: 1rem 2rem;
+  }
+
+
+  .sort-by {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+  
+  select {
+    min-width: 150px;
+    padding: 8px;
+  }
+
+  .text-sm {
+    display: inline;
   }
 
   .section {
@@ -381,14 +426,10 @@ input {
     text-align: left;
   }
 
-  .photo-category {
+  /* .photo-category {
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .photo-text {
-    text-align: left;
-  }
+  } */
 
   .card-category-grid {
     justify-content: space-between;
@@ -401,12 +442,20 @@ input {
   .checkbox-category {
     text-align: left;
   }
+
+  .hide-btn {
+    display: none;
+  }
 }
 
 /* Desktop breakpoint */
 @media (min-width: 1024px) {
   body {
     margin: 1rem 5rem;
+  }
+
+  .hide-btn {
+    display: none;
   }
 
   .card-section {

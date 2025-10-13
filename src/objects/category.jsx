@@ -2,9 +2,9 @@ export const Category = [
   {
     name: "People",
   },
-  {
-    name: "Premium",
-  },
+  // {
+  //   name: "Premium",
+  // },
   {
     name: "Pets",
   },

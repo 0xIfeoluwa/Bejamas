@@ -2,7 +2,13 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 import "./App.css";
 import { Card } from "./components/card";
 import { CheckButton } from "./components/checkbutton";
-import { CartIcon, CloseIcon, LogoIcon, Sort } from "./components/icons/Icons";
+import {
+  CartIcon,
+  CloseIcon,
+  LogoIcon,
+  Sort,
+  ChevronDownIcon,
+} from "./components/icons/Icons";
 import { photoOfTheDay, cardObject } from "./objects/cardObject";
 import { Category } from "./objects/category";
 import { PriceRange } from "./objects/priceRange";
@@ -366,47 +372,63 @@ function App() {
 
       <section>
         <section className="photo-category">
-          <p className="photo-text">
-            <span
-              onClick={handleShowAllPhotos}
-              className={`cursor-pointer ${
-                !isPremiumFilterActive
-                  ? "font-semibold text-gray-900"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-              style={{ transition: "color 0.2s" }}
+          <div className="photo-text">
+            <div>
+              <p>
+                <span
+                  onClick={handleShowAllPhotos}
+                  className={`cursor-pointer ${
+                    !isPremiumFilterActive
+                      ? "font-semibold text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                  style={{ fontSize: "18px", transition: "color 0.2s" }}
+                >
+                  Photography
+                </span>
+                {" / "}
+                <span
+                  onClick={handleShowPremiumPhotos}
+                  className={`cursor-pointer ${
+                    isPremiumFilterActive
+                      ? "font-semibold text-gray-900"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                  style={{ fontSize: "18px", transition: "color 0.2s" }}
+                >
+                  Premium Photos
+                </span>
+              </p>
+            </div>
+            <div
+              className="hide-btn"
+              onClick={() =>
+                document
+                  .querySelector(".checkbutton-flex")
+                  .classList.toggle("show")
+              }
             >
-              Photography
-            </span>
-            {" / "}
-            <span
-              onClick={handleShowPremiumPhotos}
-              className={`cursor-pointer ${
-                isPremiumFilterActive
-                  ? "font-semibold text-gray-900"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-              style={{ transition: "color 0.2s" }}
-            >
-              Premium Photos
-            </span>
-          </p>
-          <aside className="flex items-center space-x-2">
-            <Sort />
-            <label htmlFor="sort-select" className="text-sm">
-              Sort By
-            </label>
-            <select
-              id="sort-select"
-              value={sortOrder}
-              onChange={(e) => handleSortChange(e.target.value)}
-              className="p-2 border border-gray-300 rounded-lg text-sm focus:ring-gray-500 focus:border-gray-500"
-            >
-              <option value="none">Price: Default</option>
-              <option value="low-to-high">Price: Low to High</option>
-              <option value="high-to-low">Price: High to Low</option>
-            </select>
-          </aside>
+              <ChevronDownIcon />
+            </div>
+          </div>
+          <div className="sort-by">
+            <aside className="flex items-center space-x-2">
+              <Sort />
+              <label htmlFor="sort-select" className="text-sm">
+                Sort By
+              </label>
+              <select
+                id="sort-select"
+                value={sortOrder}
+                onChange={(e) => handleSortChange(e.target.value)}
+                className="p-2 border border-gray-300 rounded-lg text-sm focus:ring-gray-500 focus:border-gray-500"
+              >
+                <option value="none">Price: Default</option>
+                <option value="low-to-high">Price: Low to High</option>
+                <option value="high-to-low">Price: High to Low</option>
+              </select>
+            </aside>
+          </div>
         </section>
 
         <section className="card-category-grid">
@@ -449,6 +471,7 @@ function App() {
                     category={card.category}
                     title={card.title}
                     price={"$" + card.price.toFixed(2)}
+                    isPremium={card.isPremium}
                     onClick={() => addToCart(card)}
                   />
                 </ul>
