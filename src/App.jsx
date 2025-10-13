@@ -402,11 +402,12 @@ function App() {
             </div>
             <div
               className="hide-btn"
-              onClick={() =>
+              onClick={() => {
                 document
                   .querySelector(".checkbutton-flex")
-                  .classList.toggle("show")
-              }
+                  .classList.add("show");
+                document.body.classList.add("modal-open");
+              }}
             >
               <ChevronDownIcon />
             </div>
@@ -433,6 +434,23 @@ function App() {
 
         <section className="card-category-grid">
           <section className="checkbutton-flex">
+            <div className="mobile-filter-header">
+              <h2 className="text-xl font-bold">Filter</h2>
+              <button
+                className="close-filter-btn"
+                onClick={() => {
+                  document
+                    .querySelector(".checkbutton-flex")
+                    .classList.remove("show");
+                  document
+                    .querySelector(".hide-btn")
+                    .classList.remove("active");
+                  document.body.classList.remove("modal-open");
+                }}
+              >
+                <CloseIcon />
+              </button>
+            </div>
             <div className="check-div">
               <p className="checkbox-category">Category</p>
               {Category.map((cat) => (
@@ -444,7 +462,6 @@ function App() {
                 />
               ))}
             </div>
-            <hr />
             <div className="check-div">
               <p className="checkbox-category">Price Range</p>
               {PriceRange.map((range) => (
@@ -459,6 +476,17 @@ function App() {
                 />
               ))}
             </div>
+            <button
+              className="apply-filters-btn"
+              onClick={() => {
+                document
+                  .querySelector(".checkbutton-flex")
+                  .classList.remove("show");
+                document.querySelector(".hide-btn").classList.remove("active");
+              }}
+            >
+              Apply Filters
+            </button>
           </section>
 
           <div className="card-section">
