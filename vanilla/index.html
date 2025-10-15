@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bejamas_ (Vanilla)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section class="header">
+      <div id="logo"></div>
+      <div id="cartIconContainer"></div>
+    </section>
+    <hr color="#E4E4E4" />
+
+    <section class="section">
+      <p id="samurai"></p>
+      <button class="cart-button" id="addPhotoOfDay">ADD TO CART</button>
+    </section>
+
+    <section class="main-section">
+      <img id="photoOfDayImg" alt="Photo of the day" />
+      <p class="photo">Photo of the day</p>
+    </section>
+
+    <section class="about">
+      <div>
+        <p class="about-pet" id="aboutTitle"></p>
+        <p id="animal">Pets</p>
+        <p id="about-text"></p>
+      </div>
+      <aside>
+        <section class="side">
+          <p class="about-pet">People also buy</p>
+        </section>
+        <section class="card-suggestion">
+          <img class="card-suggestion" src="./images/a.png" alt="Door" />
+          <img class="card-suggestion" src="./images/b.png" alt="Window" />
+          <img class="card-suggestion" src="./images/c.png" alt="Food" />
+        </section>
+        <section class="side">
+          <p class="about-pet">Details</p>
+          <p class="size">Size: 1020 x 1020 pixel</p>
+          <p class="size">Size: 15 mb</p>
+        </section>
+      </aside>
+    </section>
+    <hr color="#E4E4E4" />
+
+    <section>
+      <section class="photo-category">
+        <div class="photo-text">
+          <div>
+            <p>
+              <span id="tabPhotography" class="cursor-pointer">Photography</span>
+              /
+              <span id="tabPremium" class="cursor-pointer">Premium Photos</span>
+            </p>
+          </div>
+          <div class="hide-btn" id="toggleFilters">
+          </div>
+        </div>
+        <div class="sort-by">
+          <aside class="flex items-center space-x-2">
+            <label for="sort-select" class="text-sm">Sort By</label>
+            <select id="sort-select" class="p-2 border border-gray-300 rounded-lg text-sm">
+              <option value="none">Price: Default</option>
+              <option value="low-to-high">Price: Low to High</option>
+              <option value="high-to-low">Price: High to Low</option>
+            </select>
+          </aside>
+        </div>
+      </section>
+
+      <section class="card-category-grid">
+        <section class="checkbutton-flex" id="filters">
+          <div class="check-div">
+            <p class="checkbox-category">Category</p>
+            <div id="categoryFilters"></div>
+          </div>
+          <div class="check-div">
+            <p class="checkbox-category">Price Range</p>
+            <div id="priceFilters"></div>
+          </div>
+        </section>
+
+        <div class="card-section" id="cards"></div>
+      </section>
+
+      <div class="pagination" id="pagination"></div>
+    </section>
+
+    <div id="cartModalRoot"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
